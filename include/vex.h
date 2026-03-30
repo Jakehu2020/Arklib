@@ -15,7 +15,7 @@
 #include "v5.h"
 #include "v5_vcs.h"
 
-#include "robot-config.h"
+#include "..\ark_custom\include\robot-config.hpp"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \
