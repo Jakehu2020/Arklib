@@ -1,20 +1,21 @@
 # VEXcode mkrules.mk 2019_03_26_01
+# ARKLIB Modified. 2026_03_31_01
 
 # compile C files
 $(BUILD)/%.o: %.c $(SRC_H)
 	$(Q)$(MKDIR)
-	$(ECHO) "CC  $<"
+	$(ECHO) Compiling C files..   $<"
 	$(Q)$(CC) $(CFLAGS) $(INC) -c -o $@ $<
 	
 # compile C++ files
 $(BUILD)/%.o: %.cpp $(SRC_H) $(SRC_A)
 	$(Q)$(MKDIR)
-	$(ECHO) "CXX $<"
+	$(ECHO) Compiling C++ files.. $<
 	$(Q)$(CXX) $(CXX_FLAGS) $(INC) -c -o $@ $<
 	
 # create executable 
 $(BUILD)/$(PROJECT).elf: $(OBJ)
-	$(ECHO) "LINK $@"
+	$(ECHO) Creating Executable.. $@
 	$(Q)$(LINK) $(LNK_FLAGS) -o $@ $^ $(LIBS)
 	$(Q)$(SIZE) $@
 

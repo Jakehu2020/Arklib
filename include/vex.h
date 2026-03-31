@@ -11,11 +11,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../ark_custom/include/main.h"
 
 #include "v5.h"
 #include "v5_vcs.h"
-
-#include "..\ark_custom\include\robot-config.hpp"
 
 #define waitUntil(condition)                                                   \
   do {                                                                         \

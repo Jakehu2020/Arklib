@@ -108,3 +108,5 @@ LIBS =  --start-group -lv5rt -lstdc++ -lc -lm -lgcc --end-group
 INC += $(addprefix -I, ${INC_F})
 INC += -I"$(VEX_SDK_PATH)/$(PLATFORM)/include"
 INC += ${TOOL_INC}
+
+INC += -I"$(VEX_SDK_PATH)/$(PLATFORM)/Arklib/ark_custom/include/"

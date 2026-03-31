@@ -1,7 +1,4 @@
-#pragma once
-
-#include "vex.h"
-#include "v5.h"
+#include "../ark_custom/include/motion/PID.h"
 
 // IMPORTANT: THIS IS UNFINISHED AND REQUIRES DOCUMENTATION.
 // Documentation will be added once the class is finalized. Many algorithms are still being tested, so the interface may change in the future.
@@ -16,35 +13,35 @@ T clamp(const T& value, const T& low, const T& high) {
     return value;
 }
 
-class PID {
-    public:
-        double kP, kI, kD, kF;
+// class ArkPID {
+//     private:
+//         double target;
 
-        double outputMax;
-        double outputMin;
-        double integralLimit;
-        double integralZone;
-        double tolerance;
-        double slewRate;
+//         double lastError;
+//         double lastState;
+//         double integral;
+//         double lastOutput;
 
-    private:
-        double target;
+//         uint64_t lastTime;
+//         bool firstRun;
 
-        double lastError;
-        double lastState;
-        double integral;
-        double lastOutput;
+//     public:
+//         double kP, kI, kD, kF;
 
-        uint64_t lastTime;
-        bool firstRun;
+//         double outputMax;
+//         double outputMin;
+//         double integralLimit;
+//         double integralZone;
+//         double tolerance;
+//         double slewRate;
     
-    PID(double p, double i, double d, double f);
-    void setConstants(double p, double i, double d, double f);
-    void setTarget(double t);
-    void reset();
-    bool atTarget(double state);
-    double calculate(double state);
-};
+//         ArkPID(double p, double i, double d, double f);
+//         void setConstants(double p, double i, double d, double f);
+//         void setTarget(double t);
+//         void reset();
+//         bool atTarget(double state);
+//         double calculate(double state);
+// };
 
 /**
  * @brief Constructs a PID controller object.
@@ -57,25 +54,25 @@ class PID {
  * Initializes the PID controller with the specified values.
  */
 
-PID::PID(double p, double i, double d, double f = 0)
+ArkPID::ArkPID(double p, double i, double d, double f = 0)
     : kP(p), kI(i), kD(d), kF(f),
           outputMax(12.0), outputMin(-12.0),
           integralLimit(1000), integralZone(1e9),
-          tolerance(1.0), slewRate(1e9),
-          target(0), lastError(0), lastState(0),
+          tolerance(1.0), target(0), slewRate(1e9),
+          lastError(0), lastState(0),
           integral(0), lastOutput(0),
           lastTime(vex::timer::systemHighResolution()),
           firstRun(true) {}
 
-void PID::setConstants(double p, double i, double d, double f = 0) {
+void ArkPID::setConstants(double p, double i, double d, double f = 0) {
     kP = p; kI = i; kD = d; kF = f;
 }
 
-void PID::setTarget(double t) {
+void ArkPID::setTarget(double t) {
     target = t;
 }
 
-void PID::reset() {
+void ArkPID::reset() {
     lastError = 0;
     lastState = 0;
     integral = 0;
@@ -84,11 +81,11 @@ void PID::reset() {
     firstRun = true;
 }
 
-bool PID::atTarget(double state) {
+bool ArkPID::atTarget(double state) {
     return absd(target - state) <= tolerance;
 }
 
-double PID::calculate(double state) {
+double ArkPID::calculate(double state) {
     uint64_t now = vex::timer::systemHighResolution();
     double dt = (now - lastTime) / 1000.0;
     if (dt <= 0) dt = 0.001;
