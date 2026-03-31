@@ -1,5 +1,5 @@
 # Arklib
-Arkansas Library that combines technically advanced motion controllers with the better of the properties of Lemlib, EZ, RW, VOSS, and other popular VEX libraries, all with VEX-native OS software.
+Arkansas-developed VEX robotics library that combines technically advanced motion controllers with maximally user-accessible experience and optimized performance, all using VEX-native OS software.
 
 <hr>
 
@@ -11,4 +11,4 @@ Contributors:
 
 ## Note: This project is ongoing.
 
-It has yet to be completed and released. If you would like to help out, it would greatly be appreciated. Check out [this](TODO.md) to see what we're planning to add.
+It has yet to be completed and released. If you would like to help out, it would be greatly appreciated. Check out [this](TODO.md) to see what we're planning to add.
