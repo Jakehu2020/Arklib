@@ -4,6 +4,7 @@ using namespace vex;
 
 // example PID
 ArkPID armPID(0.5, 0.01, 0.1, 0.0);
+ArkMotor armMotor(1, 1.0, &armPID);
 
 // A global instance of competition
 competition Competition;
