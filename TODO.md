@@ -3,10 +3,9 @@
 Here is a list of possible additions to the project, sorted by priority.
 
 ### Hardware:
-1. General Motor Control (adaption with PID class)
-2. Motor Groups (Motor class extension that holds multiple motors)
-3. General Tracking Wheel Hardware (e.g. ADI-encoders, Rotation Sensors)
-4. Differential Drivetrain class -> "Chassis" (chassis should contain custom software motions)
+1. 2D Motor Groups (drivetrain will automatically derive from here)
+2. General Tracking Wheel Hardware (e.g. ADI-encoders, Rotation Sensors)
+3. Chassis: 2D motor group + odometry should contain custom software motions
 
 ### Software:
 1. General PID Control

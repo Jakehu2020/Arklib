@@ -40,6 +40,12 @@ c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\
                               c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(vex_brain.cpp.obj) (vex::mevent::mevent(unsigned long, unsigned long))
 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(vex_drivetrain.cpp.obj)
                               c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(vex_smartdrive.cpp.obj) (vex::drivetrain::~drivetrain())
+c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+                              build/ark_custom/src/hardware/motorgroup.o (__aeabi_memclr)
+c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memmove-soft.o)
+                              build/ark_custom/src/hardware/motorgroup.o (__aeabi_memmove4)
+c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memset-soft.o)
+                              c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o) (__aeabi_memset)
 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-fini.o)
                               c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(v5_startup.c.obj) (__libc_fini_array)
 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-impure.o)
@@ -80,6 +86,234 @@ Discarded input sections
  .rodata.str1.1
                 0x00000000       0x39 build/src/robot-config.o
  .llvm_addrsig  0x00000000        0xd build/src/robot-config.o
+ .text          0x00000000        0x0 build/ark_custom/src/hardware/motorgroup.o
+ .text._Z4fabsi
+                0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._Z4fabsi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._Z3negi  0x00000000       0x14 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._Z3negi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroupC2ESt6vectorIPiSaIS1_EEP6ArkPID
+                0x00000000       0xf0 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroupC2ESt6vectorIPiSaIS1_EEP6ArkPID
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIPiSaIS0_EEaSERKS2_
+                0x00000000      0x104 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIPiSaIS0_EEaSERKS2_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroup4stopEv
+                0x00000000       0x2c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroup4stopEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroup5resetEd
+                0x00000000       0x4c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroup5resetEd
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroup8rotationEv
+                0x00000000       0x48 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroup8rotationEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroup4tickEv
+                0x00000000       0x9c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroup4tickEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark1DMotorGroup6moveToEd
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark1DMotorGroup6moveToEd
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroupC2ESt6vectorIS0_IPiSaIS1_EESaIS3_EES0_IP6ArkPIDSaIS7_EE
+                0x00000000      0x190 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroupC2ESt6vectorIS0_IPiSaIS1_EESaIS3_EES0_IP6ArkPIDSaIS7_EE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIS_IPiSaIS0_EESaIS2_EEaSERKS4_
+                0x00000000      0x1d0 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIS_IPiSaIS0_EESaIS2_EEaSERKS4_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EED2Ev
+                0x00000000       0x50 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EED2Ev
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIPiSaIS0_EEC2ERKS2_
+                0x00000000       0x78 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIPiSaIS0_EEC2ERKS2_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE9push_backERKS4_
+                0x00000000       0x3c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE9push_backERKS4_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIP6ArkPIDSaIS1_EEaSERKS3_
+                0x00000000      0x104 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIP6ArkPIDSaIS1_EEaSERKS3_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup6moveToEid
+                0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup6moveToEid
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup6moveToESt6vectorIdSaIdEE
+                0x00000000       0x58 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup6moveToESt6vectorIdSaIdEE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup4tickEv
+                0x00000000       0xf8 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup4tickEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup8rotationEv
+                0x00000000       0xa0 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup8rotationEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup4tickEid
+                0x00000000       0x6c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup4tickEid
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup4tickEi
+                0x00000000       0x78 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup4tickEi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup8rotationEi
+                0x00000000       0x50 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup8rotationEi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup4stopEi
+                0x00000000       0x34 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup4stopEi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup4stopEv
+                0x00000000       0x40 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup4stopEv
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup5resetEid
+                0x00000000       0x54 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup5resetEid
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup8resetAllESt6vectorIdSaIdEE
+                0x00000000       0x94 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup8resetAllESt6vectorIdSaIdEE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIPN3vex5motorESaIS2_EEC2ERKS4_
+                0x00000000       0x78 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIPN3vex5motorESaIS2_EEC2ERKS4_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup7disableEi
+                0x00000000       0x24 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup7disableEi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup7disableERKSt6vectorIiSaIiEE
+                0x00000000       0x58 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup7disableERKSt6vectorIiSaIiEE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup6enableEi
+                0x00000000       0x24 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup6enableEi
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .text._ZN15Ark2DMotorGroup6enableERKSt6vectorIiSaIiEE
+                0x00000000       0x58 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZN15Ark2DMotorGroup6enableERKSt6vectorIiSaIiEE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseIPiSaIS0_EE11_M_allocateEj
+                0x00000000       0x30 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseIPiSaIS0_EE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIPN3vex5motorESaIS2_EE14_M_move_assignEOS4_St17integral_constantIbLb1EE
+                0x00000000       0x5c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIPN3vex5motorESaIS2_EE14_M_move_assignEOS4_St17integral_constantIbLb1EE
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIPN3vex5motorESaIS2_EE19_M_emplace_back_auxIJS2_EEEvDpOT_
+                0x00000000       0x8c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIPN3vex5motorESaIS2_EE19_M_emplace_back_auxIJS2_EEEvDpOT_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNKSt6vectorIPN3vex5motorESaIS2_EE12_M_check_lenEjPKc
+                0x00000000       0x54 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNKSt6vectorIPN3vex5motorESaIS2_EE12_M_check_lenEjPKc
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseIPN3vex5motorESaIS2_EE11_M_allocateEj
+                0x00000000       0x30 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseIPN3vex5motorESaIS2_EE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIS_IPiSaIS0_EESaIS2_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEPS2_jT_SC_
+                0x00000000       0x44 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIS_IPiSaIS0_EESaIS2_EE20_M_allocate_and_copyIN9__gnu_cxx17__normal_iteratorIPKS2_S4_EEEEPS2_jT_SC_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseISt6vectorIPiSaIS1_EESaIS3_EE11_M_allocateEj
+                0x00000000       0x3c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseISt6vectorIPiSaIS1_EESaIS3_EE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE19_M_emplace_back_auxIJRKS4_EEEvDpOT_
+                0x00000000       0xb4 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE19_M_emplace_back_auxIJRKS4_EEEvDpOT_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNKSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE12_M_check_lenEjPKc
+                0x00000000       0x64 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNKSt6vectorIS_IPN3vex5motorESaIS2_EESaIS4_EE12_M_check_lenEjPKc
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseISt6vectorIPN3vex5motorESaIS3_EESaIS5_EE11_M_allocateEj
+                0x00000000       0x3c build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseISt6vectorIPN3vex5motorESaIS3_EESaIS5_EE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt20__uninitialized_copyILb0EE13__uninit_copyISt13move_iteratorIPSt6vectorIPN3vex5motorESaIS6_EEES9_EET0_T_SC_SB_
+                0x00000000       0x84 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt20__uninitialized_copyILb0EE13__uninit_copyISt13move_iteratorIPSt6vectorIPN3vex5motorESaIS6_EEES9_EET0_T_SC_SB_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseIP6ArkPIDSaIS1_EE11_M_allocateEj
+                0x00000000       0x30 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseIP6ArkPIDSaIS1_EE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt6vectorIdSaIdEE19_M_emplace_back_auxIJdEEEvDpOT_
+                0x00000000       0x80 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt6vectorIdSaIdEE19_M_emplace_back_auxIJdEEEvDpOT_
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNKSt6vectorIdSaIdEE12_M_check_lenEjPKc
+                0x00000000       0x54 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNKSt6vectorIdSaIdEE12_M_check_lenEjPKc
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .group         0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
+ .text._ZNSt12_Vector_baseIdSaIdEE11_M_allocateEj
+                0x00000000       0x30 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.exidx.text._ZNSt12_Vector_baseIdSaIdEE11_M_allocateEj
+                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
+ .rodata.str1.1
+                0x00000000       0x1c build/ark_custom/src/hardware/motorgroup.o
+ .comment       0x00000000       0x2e build/ark_custom/src/hardware/motorgroup.o
+ .note.GNU-stack
+                0x00000000        0x0 build/ark_custom/src/hardware/motorgroup.o
+ .ARM.attributes
+                0x00000000       0x3a build/ark_custom/src/hardware/motorgroup.o
+ .llvm_addrsig  0x00000000        0x0 build/ark_custom/src/hardware/motorgroup.o
+ .text          0x00000000        0x0 build/ark_custom/src/hardware/odometry.o
+ .comment       0x00000000       0x2e build/ark_custom/src/hardware/odometry.o
+ .note.GNU-stack
+                0x00000000        0x0 build/ark_custom/src/hardware/odometry.o
+ .ARM.attributes
+                0x00000000       0x38 build/ark_custom/src/hardware/odometry.o
+ .llvm_addrsig  0x00000000        0x0 build/ark_custom/src/hardware/odometry.o
+ .text          0x00000000        0x0 build/ark_custom/src/hardware/chassis.o
+ .comment       0x00000000       0x2e build/ark_custom/src/hardware/chassis.o
+ .note.GNU-stack
+                0x00000000        0x0 build/ark_custom/src/hardware/chassis.o
+ .ARM.attributes
+                0x00000000       0x38 build/ark_custom/src/hardware/chassis.o
+ .llvm_addrsig  0x00000000        0x0 build/ark_custom/src/hardware/chassis.o
  .text          0x00000000        0x0 build/ark_custom/src/hardware/motors.o
  .text._ZN8ArkMotor8rotationEv
                 0x00000000       0x2c build/ark_custom/src/hardware/motors.o
@@ -2928,6 +3162,24 @@ Discarded input sections
                 0x00000000       0x28 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(vex_drivetrain.cpp.obj)
  .text._ZN3vex10drivetrain14getMaxVelocityENS_13velocityUnitsE
                 0x00000000       0x64 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5\libv5rt.a(vex_drivetrain.cpp.obj)
+ .text          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .data          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .bss           0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .text.__aeabi_memclr
+                0x00000000        0x8 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .debug_frame   0x00000000       0x20 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .ARM.attributes
+                0x00000000       0x2b c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memclr.o)
+ .text          0x00000000       0x3a c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memmove-soft.o)
+ .data          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memmove-soft.o)
+ .bss           0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memmove-soft.o)
+ .ARM.attributes
+                0x00000000       0x19 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memmove-soft.o)
+ .text          0x00000000       0x9a c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memset-soft.o)
+ .data          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memset-soft.o)
+ .bss           0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memset-soft.o)
+ .ARM.attributes
+                0x00000000       0x19 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-aeabi_memset-soft.o)
  .text          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-fini.o)
  .data          0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-fini.o)
  .bss           0x00000000        0x0 c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/gcc/libs\libc.a(lib_a-fini.o)
@@ -3956,7 +4208,7 @@ Linker script and memory map
                 0x03803ef0                __fini_array_end = .
 
 .ARM.attributes
-                0x03803ef0       0x3c
+                0x03803ef0       0x3a
                 0x03803ef0                __ARM.attributes_start = .
  *(.ARM.attributes)
  .ARM.attributes
@@ -4198,6 +4450,9 @@ Linker script and memory map
 LOAD c:\Users\Hu\AppData\Roaming\Code\User\globalStorage\vexrobotics.vexcode\sdk\cpp\V5\V5_20240802_15_00_00/vexv5/stdlib_0.lib
 LOAD build/src/main.o
 LOAD build/src/robot-config.o
+LOAD build/ark_custom/src/hardware/motorgroup.o
+LOAD build/ark_custom/src/hardware/odometry.o
+LOAD build/ark_custom/src/hardware/chassis.o
 LOAD build/ark_custom/src/hardware/motors.o
 LOAD build/ark_custom/src/motion/PID.o
 LOAD build/ark_custom/src/robot-config.o
