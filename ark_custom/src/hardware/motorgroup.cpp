@@ -8,9 +8,6 @@ int fabs(int x){
     if(x < 0) return -x;
     return x;
 }
-bool neg(int x){
-    return x > 0;
-}
 
 // The intention of a custom Motor Class is to allow more control over individual motors.
 // For example, it will allow built-in PID control, which can be used for more precise movements. 
@@ -18,7 +15,7 @@ Ark1DMotorGroup::Ark1DMotorGroup(std::vector<int*> motors, ArkPID* pid) {
     this->ports = motors;
     this->motors = std::vector<vex::motor*>();
     for (int* port : motors) {
-        this->motors.push_back(new vex::motor(fabs(*port), neg(*port)));
+        this->motors.push_back(new vex::motor(fabs(*port), *port < 0));
     }
     this->pid = pid;
 };
@@ -63,7 +60,7 @@ Ark2DMotorGroup::Ark2DMotorGroup(std::vector<std::vector<int*>> motors, std::vec
     for (std::vector<int*> sector : motors){
         std::vector<vex::motor*> motorgroup;
         for (int* port : sector) {
-            motorgroup.push_back(new vex::motor(fabs(*port), neg(*port)));
+            motorgroup.push_back(new vex::motor(fabs(*port), *port < 0));
         }
         this->motors.push_back(motorgroup);
     }

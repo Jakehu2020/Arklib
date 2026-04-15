@@ -91,9 +91,6 @@ Discarded input sections
                 0x00000000        0xc build/ark_custom/src/hardware/motorgroup.o
  .ARM.exidx.text._Z4fabsi
                 0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
- .text._Z3negi  0x00000000       0x14 build/ark_custom/src/hardware/motorgroup.o
- .ARM.exidx.text._Z3negi
-                0x00000000        0x8 build/ark_custom/src/hardware/motorgroup.o
  .text._ZN15Ark1DMotorGroupC2ESt6vectorIPiSaIS1_EEP6ArkPID
                 0x00000000       0xf0 build/ark_custom/src/hardware/motorgroup.o
  .ARM.exidx.text._ZN15Ark1DMotorGroupC2ESt6vectorIPiSaIS1_EEP6ArkPID
