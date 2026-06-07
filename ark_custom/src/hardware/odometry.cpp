@@ -3,6 +3,9 @@
 #include <array>
 #include <cmath>
 #include <cstdlib>
+#include <memory>
+#include <utility>
+#include <type_traits>
 
 /*
 The idea is to have:
@@ -20,8 +23,7 @@ TrackingWheel::TrackingWheel(int port, double wheel, double offsets[3])
         wheel(wheel),
         angle(offsets[2]),
         offsets{offsets[0], offsets[1]},
-        lastRotation(0.0),
-        lastHeading(0.0)
+        lastRotation(0.0)
 {
     tracker.setPosition(0.0, vex::degrees);
 }
@@ -35,11 +37,12 @@ std::array<double, 2> TrackingWheel::gains(double dHeading)
     double displacement = deltaDeg * (M_PI * wheel / 360.0);
     double dx = displacement * std::sin(angle) - offsets[1] * dHeading;
     double dy = displacement * std::cos(angle) + offsets[0] * dHeading;
-
-    dx -= -offsets[1] * dHeading;
-    dy -= offsets[0] * dHeading;
-
+    
     return {dx, dy};
+}
+void TrackingWheel::reset(){
+    tracker.setPosition(0.0, vex::degrees);
+    lastRotation = 0.0;
 }
 
 DifferentialOdometry::DifferentialOdometry(Ark2DMotorGroup& drivetrain, double wheel, double wheelBase, double trackWidth, double gearRatio)
@@ -63,14 +66,15 @@ std::array<double, 2> DifferentialOdometry::gains(double dHeading)
         deltaY = (deltaPos[0] + deltaPos[1]) / 2.0;
     } else {
         // Arc-based Geometry
-        deltaY = std::sin(dHeading / 2.0) * ((deltaPos[0] + deltaPos[1]) / dHeading + wheelBase);
+        double r = (deltaPos[0] + deltaPos[1]) / (2.0 * dHeading);
+        deltaY = 2.0 * r * std::sin(dHeading / 2.0);
     }
     
-    double angle = lastHeading + dHeading / 2.0;
+    double angle = dHeading / 2.0;
     return {deltaY * std::sin(angle), deltaY * std::cos(angle)};
 }
 
-double DifferentialOdometry::thetaGains()
+double DifferentialOdometry::thetaGains(double lastHeading, bool degrees)
 {
     std::vector<double> positions = Drivetrain.rotation();
 
@@ -79,13 +83,18 @@ double DifferentialOdometry::thetaGains()
         multiplier * (positions[1] - lastPosition[1])
     };
 
-    return (deltaPos[1] - deltaPos[0])/trackWidth * 180.0/M_PI;
+    return (deltaPos[1] - deltaPos[0])/trackWidth * (degrees ? 1.0 : 180.0/M_PI );
 }
 
-void DifferentialOdometry::tick(double heading)
+void DifferentialOdometry::reset()
+{
+    Drivetrain.resetAll({0.0, 0.0});
+    lastPosition = {0.0, 0.0};
+}
+
+void DifferentialOdometry::tick()
 {
     std::vector<double> positions = Drivetrain.rotation();
-    lastHeading = heading;
     lastPosition = positions;
 }
 
@@ -93,9 +102,9 @@ Inertial::Inertial(int port)
     : inertial(vex::inertial(std::abs(port), port > 0 ? vex::turnType::right : vex::turnType::left))
 {}
 
-double Inertial::thetaGains()
+double Inertial::thetaGains(double lastHeading, bool degrees)
 {
-    return inertial.heading();
+    return degrees ? inertial.heading() : inertial.heading() * M_PI / 180.0 - lastHeading;
 }
 
 void Inertial::calibrate()
@@ -104,43 +113,19 @@ void Inertial::calibrate()
 }
 
 // ODOMETRY
-
 Odometry::Odometry(
     std::vector<Source<HeadingSource>> heading,
-    std::vector<Source<PositionSource>> position
-) : headingSources(heading), positionSources(position) {}
+    std::vector<Source<PositionSource>> position,
+    OdometryFilter& filter
+) : headingSources(heading), positionSources(position), filter(filter) {}
 
-double Odometry::heading(){
-    double x = 0.0, y = 0.0;
+void Odometry::tick() {
+    double newTheta = filter.filterHeading(headingSources);
+    double dTheta = newTheta - globalTheta;
 
-    for (auto& s : headingSources) {
-        double h = s.source->thetaGains();
-        x += std::cos(h) * s.weight;
-        y += std::sin(h) * s.weight;
-    }
-    
-    return std::atan2(y, x);
-}
+    globalTheta = newTheta;
 
-std::array<double, 2> Odometry::gains() {
-    double dx = 0.0, dy = 0.0, totalWeight = 0.0;
-
-    for (auto& s : positionSources) {
-        std::array<double, 2> gain = s.source->gains(globalTheta - lastTheta); // only delta heading is used anyway; all sources only use local information, so this makes no difference.
-        dx += gain[0] * s.weight;
-        dy += gain[1] * s.weight;
-        totalWeight += s.weight;
-    }
-
-    return {dx / totalWeight, dy / totalWeight};
-}
-
-void Odometry::tick(){
-    double dTheta = heading();
-    lastTheta = globalTheta;
-    globalTheta += dTheta;
-
-    std::array<double, 2> gain = gains();
+    auto gain = filter.filterPosition(positionSources, dTheta);
     globalX += gain[0];
     globalY += gain[1];
 }
@@ -149,30 +134,51 @@ std::array<double, 3> Odometry::getPose(){
     return {globalX, globalY, globalTheta};
 }
 
+Pose2d Odometry::getPose(bool pose){
+    Pose2d position;
+    position.setAll(globalX, globalY, globalTheta);
+    return position;
+}
+
+void Odometry::resetDevices(){
+    for (auto& s : positionSources) {
+        s.source->reset();
+    }
+    for (auto& s : headingSources) {
+        s.source->reset();
+    }
+}
+
 void Odometry::setX(double x){
+    this->resetDevices();
     globalX = x;
 }
 
 void Odometry::setY(double y){
+    this->resetDevices();
     globalY = y;
 }
 
 void Odometry::setT(double theta){
+    this->resetDevices();
     globalTheta = theta;
 }
 
 void Odometry::setXY(double x, double y){
+    this->resetDevices();
     globalX = x;
     globalY = y;
 }
 
 void Odometry::setXYT(double x, double y, double theta){
+    this->resetDevices();
     globalX = x;
     globalY = y;
     globalTheta = theta;
 }
 
 void Odometry::setPose(double x, double y, double theta){
+    this->resetDevices();
     globalX = x;
     globalY = y;
     globalTheta = theta;

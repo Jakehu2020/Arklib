@@ -29,6 +29,8 @@ class Ark2DMotorGroup {
         void tick();
         void tick(int sector);
         void tick(int sector, double rotation);
+        void move(int sector, double voltage);
+        void move(std::vector<double> voltage);
         void stop(int sector);
         void stop();
         double rotation(int sector);

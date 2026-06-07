@@ -1,10 +1,10 @@
 #include "../ark_custom/include/motion/PID.h"
+#include <cstdlib>
+#include <cmath>
 
 // IMPORTANT: THIS IS UNFINISHED AND REQUIRES DOCUMENTATION.
 // Documentation will be added once the class is finalized. Many algorithms are still being tested, so the interface may change in the future.
-
-// Simple helpers (std doesn't work on VEX)
-inline double absd(double x) { return x < 0 ? -x : x; }
+// For example, kAW is under testing.
 
 template<typename T>
 T clamp(const T& value, const T& low, const T& high) {
@@ -39,7 +39,7 @@ void ArkPID::reset() {
 }
 
 bool ArkPID::atTarget(double state) {
-    return absd(target - state) <= tolerance;
+    return std::abs(target - state) <= tolerance;
 }
 
 double ArkPID::calculate(double state) {
@@ -50,7 +50,7 @@ double ArkPID::calculate(double state) {
     double error = target - state;
     double P = kP * error;
 
-    if (absd(error) < integralZone) {
+    if (std::abs(error) < integralZone) {
         integral += error * dt;
         integral = clamp(integral, -integralLimit, integralLimit);
     } else {

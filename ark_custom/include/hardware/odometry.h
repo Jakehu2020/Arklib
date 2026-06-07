@@ -1,35 +1,18 @@
-#include "../units.hpp"
-#include "../motion/PID.h"
-
 #define _USE_MATH_DEFINES
 #include "v5.h"
 #include <array>
 #include <cmath>
 #include <cstdlib>
+#include <memory>
+#include <utility>
+#include <vector>
+#include <type_traits>
 
-#include "../units.hpp"
+#include "../util/pose.h"
+#include "../util/filters.h"
+#include "../util/units.hpp"
 #include "../motion/PID.h"
 #include "../hardware/motorgroup.h"
-
-template<typename T>
-struct Source {
-    T* source;
-    double weight;
-};
-
-class HeadingSource {
-public:
-    virtual double thetaGains();
-    virtual void calibrate();
-    virtual ~HeadingSource() = default;
-};
-
-class PositionSource {
-public:
-    virtual std::array<double, 2> gains(double heading);
-    virtual ~PositionSource() = default;
-    virtual void tick(double heading) {};
-};
 
 class TrackingWheel : public PositionSource {
 public:
@@ -40,9 +23,11 @@ public:
     double lastRotation = 0.0;
     double lastHeading = 0.0;
 
+    ~TrackingWheel();
     TrackingWheel(int port, double wheel, double offsets[3]);
-    std::array<double, 2> gains(double dHeading) override;
-    void tick(double heading) override;
+    std::array<double, 2> gains(double dHeading);
+    void tick() override;
+    void reset() override;
 };
 
 class DifferentialOdometry : public HeadingSource, public PositionSource {
@@ -58,11 +43,13 @@ public:
 
     double multiplier = 1.0;
 
+    ~DifferentialOdometry();
     DifferentialOdometry(Ark2DMotorGroup& drivetrain, double wheel, double wheelBase, double trackWidth, double gearRatio=1.0);
 
-    std::array<double, 2> gains(double dHeading) override;
-    double thetaGains() override;
-    void tick(double heading) override;
+    std::array<double, 2> gains(double dHeading);
+    double thetaGains(double lastHeading, bool degrees=true) override;
+    void tick() override;
+    void reset() override;
 };
 
 class Inertial : public HeadingSource {
@@ -71,7 +58,7 @@ public:
     using HeadingSource::thetaGains;
 
     Inertial(int port);
-    double thetaGains() override;
+    double thetaGains(double lastHeading, bool degrees=true) override;
     void calibrate() override;
 };
 
@@ -79,19 +66,20 @@ class Odometry {
 private:
     std::vector<Source<HeadingSource>> headingSources;
     std::vector<Source<PositionSource>> positionSources;
-
+    OdometryFilter& filter;
 public:
     Odometry(
         std::vector<Source<HeadingSource>> heading,
-        std::vector<Source<PositionSource>> position
+        std::vector<Source<PositionSource>> position,
+        OdometryFilter& filter
     );
-    double globalX = 0.0, globalY = 0.0, globalTheta = 0.0;
-    double lastTheta = 0.0;
 
-    double heading();
-    std::array<double, 2> gains();
     void tick();
+    double globalX = 0, globalY = 0, globalTheta = 0;
+    
     std::array<double, 3> getPose();
+    Pose2d getPose(bool pose);
+    void resetDevices();
     void setX(double x);
     void setY(double y);
     void setT(double theta);

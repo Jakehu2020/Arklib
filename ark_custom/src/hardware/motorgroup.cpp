@@ -104,6 +104,20 @@ void Ark2DMotorGroup::tick(int sector, double rotation){
         motor->spin(vex::directionType::fwd, output, vex::voltageUnits::volt);
     }
 }
+void Ark2DMotorGroup::move(int sector, double voltage){
+    for (vex::motor* motor : motors[sector]) {
+        motor->spin(vex::directionType::fwd, voltage, vex::voltageUnits::volt);
+    }
+}
+void Ark2DMotorGroup::move(std::vector<double> voltage){
+    int i=0;
+    for(std::vector<vex::motor*>& motorgroup : motors){
+        for (vex::motor* motor : motorgroup) {
+            motor->spin(vex::directionType::fwd, voltage[i], vex::voltageUnits::volt);
+        };
+        i++;
+    }
+}
 void Ark2DMotorGroup::stop(int sector) {
     for (vex::motor* motor : motors[sector]) {
         motor->stop();
