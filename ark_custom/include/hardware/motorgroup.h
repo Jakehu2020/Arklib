@@ -1,16 +1,14 @@
-#include "../motion/PID.h"
-#include "./motors.h"
+#pragma once
+#include "v5_vcs.h"
 #include <vector>
 
 class Ark1DMotorGroup {
     public:
-        std::vector<int*> ports;
         std::vector<vex::motor*> motors;
-        ArkPID* pid;
 
-        Ark1DMotorGroup(std::vector<int*> motors, ArkPID* pid);
-        void moveTo(double target);
-        void tick();
+        Ark1DMotorGroup(std::vector<int> ports);
+        void move(double velocity);
+        void move_voltage(double voltage);
         void stop();
         double rotation();
         void reset(double position);
@@ -18,27 +16,17 @@ class Ark1DMotorGroup {
 
 class Ark2DMotorGroup {
     public:
-        std::vector<std::vector<int*>> ports;
         std::vector<std::vector<vex::motor*>> motors;
-        std::vector<ArkPID*> pids;
-        std::vector<char> disabled;
 
-        Ark2DMotorGroup(std::vector<std::vector<int*>> motors, std::vector<ArkPID*> pids);
-        void moveTo(int sector, double target);
-        void moveTo(std::vector<double> targets);
-        void tick();
-        void tick(int sector);
-        void tick(int sector, double rotation);
-        void move(int sector, double voltage);
-        void move(std::vector<double> voltage);
+        Ark2DMotorGroup(std::vector<std::vector<int>> ports);
+        void move(int sector, double velocity);
+        void move(std::vector<double> velocities);
+        void move_voltage(int sector, double voltage);
+        void move_voltage(std::vector<double> voltages);
         void stop(int sector);
         void stop();
         double rotation(int sector);
         std::vector<double> rotation();
         void reset(int sector, double position);
-        void resetAll(std::vector<double> position);
-        void disable(int sector);
-        void disable(const std::vector<int>& sectors);
-        void enable(int sector);
-        void enable(const std::vector<int>& sectors);
+        void resetAll(std::vector<double> positions);
 };

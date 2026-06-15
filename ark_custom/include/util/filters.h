@@ -181,5 +181,4 @@ private:
     StateMat P_;
 };
 
-// Declaration only — defined in filters.cpp
 std::vector<double> extendedWeightedAverage(std::vector<std::vector<std::array<double, 2>>> extendedSums);

@@ -5,6 +5,7 @@
 #include <array>
 #include <unordered_map>
 #include <string>
+#include <memory>
 
 Chassis::Chassis(Ark2DMotorGroup& Drivetrain, Odometry& odometry, double trackWidth, double wheelBase)
     : drivetrain(Drivetrain), odometry(odometry), trackWidth(trackWidth), wheelBase(wheelBase){};
@@ -18,15 +19,21 @@ void Chassis::move(double v, double omega){
     tank(v - omega * trackWidth / 2.0, v + omega * trackWidth / 2.0);
 }
 
-void Chassis::controlPath(
-            ControllerFn controller,
+void Chassis::regulatorControllerPath(
+            PointControllerFn controller,
             const MotionPath& path,
             const ControllerGains& gains,
-            double threshold
+            double threshold,
+            std::shared_ptr<IExitCondition> exitOverride
         ) {
     exit = false;
     int step = 0;
     std::unordered_map<std::string, double> state;
+    std::shared_ptr<IExitCondition> activeExit = exitOverride ? exitOverride : defaultExit;
+
+    activeExit->reset();
+    activeExit->setTarget(path[step].getX(), path[step].getY()); // Assuming your path elements have getters
+
     while (!exit) {
         if(step >= path.size()) {
             break;
@@ -34,27 +41,65 @@ void Chassis::controlPath(
         Velocity2d target = controller(*this, path[step], state, gains);
         move(target.getLinearVelocity(), target.getAngularVelocity());
 
-        if (atTarget(target, threshold)) {
+        if (activeExit && (*activeExit)(odometry.getPose(true))) {
             step++;
+
+            activeExit->reset();
+            activeExit->setTarget(path[step].getX(), path[step].getY());
         }
         
         vex::task::sleep(20);
-    }
+    };
+    stop();
+}
+
+void Chassis::trackingControllerPath(
+            PathControllerFn controller,
+            const MotionPath& path,
+            const ControllerGains& gains,
+            double threshold,
+            std::shared_ptr<IExitCondition> exitOverride
+        ) {
+    exit = false;
+    int step = 0;
+    std::unordered_map<std::string, double> state;
+    std::shared_ptr<IExitCondition> activeExit = exitOverride ? exitOverride : defaultExit;
+
+    activeExit->reset();
+    activeExit->setTarget(path[step].getX(), path[step].getY()); // Assuming your path elements have getters
+
+    while (!exit) {
+        if(step >= path.size()) {
+            break;
+        }
+        Velocity2d target = controller(*this, path[step], state, gains, path);
+        move(target.getLinearVelocity(), target.getAngularVelocity());
+
+        if (activeExit && (*activeExit)(odometry.getPose(true))) {
+            step++;
+
+            activeExit->reset();
+            activeExit->setTarget(path[step].getX(), path[step].getY());
+        }
+        
+        vex::task::sleep(20);
+    };
     stop();
 }
 
 void Chassis::controlTarget(
-            ControllerFn controller,
+            PointControllerFn controller,
             Pose2d& point,
             const ControllerGains& gains,
-            double threshold
+            double threshold,
+            std::shared_ptr<IExitCondition> exitOverride
         ) {
     exit = false;
     MotionPath path = MotionProfile::bezierSpline(
         {{odometry.getPose(true), point}},
         gains.at("vMax"),
         gains.at("curvatureGain"), 20, 0.1);
-    controlPath(controller, path, gains, threshold);
+    regulatorControllerPath(controller, path, gains, threshold);
     
     stop();
 }
@@ -63,10 +108,8 @@ void Chassis::stop() {
     exit = true;
 }
 
-bool Chassis::atTarget(Velocity2d target, double threshold) {
-    Pose2d currentPose = odometry.getPose(true);
-    double distance = currentPose.getDistance(target);
-    return distance < threshold;
+void Chassis::setDefaultExitCondition(std::shared_ptr<IExitCondition> exitCond) {
+    defaultExit = exitCond;
 }
 
 /*
